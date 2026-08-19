@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Beoordeel Kiyoh Klantbeoordelingen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/prototype.css" />
+  <link rel="icon" href="assets/kiyo-logo.svg" />
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <a class="logo" href="https://www.kiyoh.com" aria-label="Kiyoh">
+        <img src="assets/kiyo-logo.svg" alt="Kiyoh" />
+      </a>
+
+      <div class="header__actions">
+        <a class="header__btn" href="https://www.kiyoh.com" aria-label="Website">
+          <img src="assets/globe-2.svg" alt="" />
+        </a>
+
+        <div class="lang" data-lang>
+          <button type="button" class="lang__btn" data-lang-toggle aria-expanded="false">
+            <img class="flag" src="assets/nl.svg" alt="" />
+            <span class="lang__text" data-lang-label>Nederlands</span>
+            <img class="chev" src="assets/arrow-down.svg" alt="" />
+          </button>
+          <ul class="lang__menu" hidden data-lang-menu>
+            <li><button type="button">Nederlands</button></li>
+            <li><button type="button">English</button></li>
+            <li><button type="button">Deutsch</button></li>
+          </ul>
+        </div>
+
+        <a class="header__kiyoh" href="https://www.kiyoh.com" aria-label="Kiyoh">
+          <img src="assets/kiyo.svg" alt="" />
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <h1 class="page__title">Beoordeel Kiyoh Klantbeoordelingen</h1>
+    <p class="page__sub">Deel je ervaring. Je e-mailadres wordt niet gepubliceerd.</p>
+
+    <div id="form-root">
+      <form id="form" novalidate>
+        <section class="card">
+          <h2 class="card__title">Jouw beoordeling</h2>
+
+          <div class="field" data-f="rating">
+            <span class="label" id="lab-rating">Totaal score <span class="req">*</span></span>
+            <p class="hint">Selecteer het aantal sterren voor de totale score (halve sterren mogelijk)</p>
+            <div class="stars" role="radiogroup" aria-labelledby="lab-rating" data-stars>
+              <button type="button" class="stars__btn" role="radio" aria-checked="false" aria-label="Ster 1" data-i="1">
+                <span class="stars__icon" aria-hidden="true">
+                  <svg class="stars__base" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.7.9-4.9 4.6 1.2 6.6L12 17.8 6.1 20.7l1.2-6.6L2.4 9.5l6.7-.9L12 2.5z"/></svg>
+                  <span class="stars__fill"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.7.9-4.9 4.6 1.2 6.6L12 17.8 6.1 20.7l1.2-6.6L2.4 9.5l6.7-.9L12 2.5z"/></svg></span>
+                </span>
+              </button>
+              <button type="button" class="stars__btn" role="radio" aria-checked="false" aria-label="Ster 2" data-i="2">
+                <span class="stars__icon" aria-hidden="true">
+                  <svg class="stars__base" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.7.9-4.9 4.6 1.2 6.6L12 17.8 6.1 20.7l1.2-6.6L2.4 9.5l6.7-.9L12 2.5z"/></svg>
+                  <span class="stars__fill"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.7.9-4.9 4.6 1.2 6.6L12 17.8 6.1 20.7l1.2-6.6L2.4 9.5l6.7-.9L12 2.5z"/></svg></span>
+                </span>
+              </button>
+              <button type="button" class="stars__btn" role="radio" aria-checked="false" aria-label="Ster 3" data-i="3">
+                <span class="stars__icon" aria-hidden="true">
+                  <svg class="stars__base" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.7.9-4.9 4.6 1.2 6.6L12 17.8 6.1 20.7l1.2-6.6L2.4 9.5l6.7-.9L12 2.5z"/></svg>
+                  <span class="stars__fill"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.7.9-4.9 4.6 1.2 6.6L12 17.8 6.1 20.7l1.2-6.6L2.4 9.5l6.7-.9L12 2.5z"/></svg></span>
+                </span>
+              </button>
+              <button type="button" class="stars__btn" role="radio" aria-checked="false" aria-label="Ster 4" data-i="4">
+                <span class="stars__icon" aria-hidden="true">
+                  <svg class="stars__base" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.7.9-4.9 4.6 1.2 6.6L12 17.8 6.1 20.7l1.2-6.6L2.4 9.5l6.7-.9L12 2.5z"/></svg>
+                  <span class="stars__fill"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.7.9-4.9 4.6 1.2 6.6L12 17.8 6.1 20.7l1.2-6.6L2.4 9.5l6.7-.9L12 2.5z"/></svg></span>
+                </span>
+              </button>
+              <button type="button" class="stars__btn" role="radio" aria-checked="false" aria-label="Ster 5" data-i="5">
+                <span class="stars__icon" aria-hidden="true">
+                  <svg class="stars__base" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.7.9-4.9 4.6 1.2 6.6L12 17.8 6.1 20.7l1.2-6.6L2.4 9.5l6.7-.9L12 2.5z"/></svg>
+                  <span class="stars__fill"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.7.9-4.9 4.6 1.2 6.6L12 17.8 6.1 20.7l1.2-6.6L2.4 9.5l6.7-.9L12 2.5z"/></svg></span>
+                </span>
+              </button>
+            </div>
+            <input type="hidden" name="rating" id="rating" value="" />
+            <p class="err">Selecteer een totaalscore.</p>
+          </div>
+
+          <div class="field" data-f="title">
+            <label class="label" for="description">Titel <span class="req">*</span></label>
+            <input class="input" type="text" id="description" name="description" maxlength="120" placeholder="Mijn ervaring in één zin*" autocomplete="off" />
+            <p class="err">Vul een korte titel in.</p>
+          </div>
+
+          <div class="field" data-f="body">
+            <label class="label" for="body">Toelichting <span class="req">*</span></label>
+            <textarea class="textarea" id="body" name="reviewBody" rows="5" placeholder="Mijn ervaring omschrijf ik als volgt*"></textarea>
+            <p class="err">Omschrijf je ervaring.</p>
+          </div>
+
+          <div class="field" data-f="recommend">
+            <span class="label" id="lab-rec">Aanbevelen? <span class="req">*</span></span>
+            <div class="choice" role="radiogroup" aria-labelledby="lab-rec">
+              <label>
+                <input type="radio" name="recommend" value="true" />
+                <span>Ja</span>
+              </label>
+              <label>
+                <input type="radio" name="recommend" value="false" />
+                <span>Nee</span>
+              </label>
+            </div>
+            <select class="sr-only" name="RECOMMEND" id="RECOMMEND" tabindex="-1" aria-hidden="true">
+              <option value="">Maak een keuze</option>
+              <option value="true">Ja</option>
+              <option value="false">Nee</option>
+            </select>
+            <p class="err">Maak een keuze.</p>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2 class="card__title">Beoordeel de volgende punten</h2>
+          <div class="field" data-f="contact">
+            <label class="label" for="contact-person">Met wie heb je contact gehad? <span class="req">*</span></label>
+            <div class="row">
+              <select class="select" id="contact-person" name="CONTACT_PERSON">
+                <option value="">Maak een keuze</option>
+                <option value="Priscilla Pijper van Bragt">Priscilla Pijper van Bragt</option>
+                <option value="Robin van Nobelen">Robin van Nobelen</option>
+                <option value="Tom Tanghe">Tom Tanghe</option>
+                <option value="Sabine Huijsmans">Sabine Huijsmans</option>
+                <option value="Eddie van Wordragen">Eddie van Wordragen</option>
+                <option value="Linda Jeurissen">Linda Jeurissen</option>
+                <option value="Bart van Dijk">Bart van Dijk</option>
+              </select>
+              <label class="check">
+                <input type="checkbox" id="na" />
+                N.v.t.
+              </label>
+            </div>
+            <p class="err">Kies een medewerker of vink N.v.t. aan.</p>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2 class="card__title">Persoonlijke gegevens</h2>
+
+          <div class="field">
+            <label class="label" for="COMPANY_NAME">Bedrijfsnaam</label>
+            <input class="input" type="text" id="COMPANY_NAME" name="COMPANY_NAME" autocomplete="organization" />
+          </div>
+
+          <div class="grid-2">
+            <div class="field" data-f="name">
+              <label class="label" for="NAME">Voornaam <span class="req">*</span></label>
+              <input class="input" type="text" id="NAME" name="NAME" autocomplete="given-name" required />
+              <p class="err">Vul je voornaam in.</p>
+            </div>
+            <div class="field" data-f="city">
+              <label class="label" for="CITY">Plaats <span class="req">*</span></label>
+              <input class="input" type="text" id="CITY" name="CITY" autocomplete="address-level2" required />
+              <p class="err">Vul je plaats in.</p>
+            </div>
+          </div>
+
+          <div class="field" data-f="email">
+            <label class="label" for="EMAIL">E-mailadres <span class="req">*</span></label>
+            <input class="input" type="email" id="EMAIL" name="EMAIL" autocomplete="email" required />
+            <p class="hint">Het e-mailadres wordt niet gepubliceerd.</p>
+            <p class="err">Vul een geldig e-mailadres in.</p>
+          </div>
+
+          <p class="note">Velden met <strong>*</strong> zijn verplicht. Voornaam en plaats worden zichtbaar op de reviewpagina.</p>
+
+          <div class="field" data-f="consent">
+            <label class="consent">
+              <input type="checkbox" id="opt-in" name="OPT_IN" value="1" />
+              <span class="consent__text">
+                Ik ga bij verzenden akkoord met de
+                <button type="button" data-open-modal>gebruikersvoorwaarden en het privacybeleid</button>
+                en met de verwerking van mijn persoonsgegevens in het kader van de AVG. Tevens verklaar ik dat ik klant ben (geweest) bij dit bedrijf.
+              </span>
+            </label>
+            <p class="err">Je moet akkoord gaan om te versturen.</p>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="btn btn--primary">Verstuur</button>
+          </div>
+        </section>
+      </form>
+
+      <div class="after-form">
+        <div class="trust-row">
+          <span class="badge">
+            <img src="assets/shield-alt.svg" alt="" width="18" height="18" />
+            Geverifieerde reviews
+          </span>
+          <span class="badge">
+            <img class="badge__star" src="assets/star-badge.svg" alt="" width="22" height="22" />
+            Jouw mening telt.
+          </span>
+          <span class="badge">
+            <img class="badge__google" src="assets/google-g.svg" alt="" width="18" height="18" />
+            Google Review Partner
+          </span>
+        </div>
+
+        <section class="card about">
+          <h2 class="about__title">
+            <img src="assets/info.svg" alt="" />
+            Over Kiyoh Klantbeoordelingen
+          </h2>
+          <p>
+            Kiyoh is sinds 2009 actief in het aanbieden van reviewsystemen. Wij werken voor grote en kleine webshops. Ons kantoor is gevestigd in Zaltbommel.
+          </p>
+          <a class="about__more" href="https://www.kiyoh.com" target="_blank" rel="noopener">
+            Meer weten over Kiyoh
+            <span aria-hidden="true">→</span>
+          </a>
+        </section>
+
+        <section class="card legal-card">
+          <h2 class="legal-card__title">Kiyoh Reviews</h2>
+          <ul class="legal-list">
+            <li>
+              Iedereen mag een review
+              <a href="https://www.kiyoh.com" target="_blank" rel="noopener">schrijven</a>
+              zolang er voldaan wordt aan de
+              <a href="#" data-open-modal>gebruikersvoorwaarden</a>.
+            </li>
+            <li>
+              Kiyoh &amp; Klantenvertellen zijn onafhankelijke platformen en erkend
+              <a href="https://www.kiyoh.com" target="_blank" rel="noopener">Google reviewpartner</a>.
+              Of een review nu lovend is of juist kritisch – iedere stem telt.
+            </li>
+            <li>
+              We voeren geautomatiseerde en handmatige controles uit om valse reviews zoveel mogelijk tegen te gaan.
+            </li>
+            <li>
+              Reviews die op eigen initiatief zijn geschreven worden direct online getoond en binnen 72 uur
+              <a href="#" data-open-modal>geverifieerd</a>.
+            </li>
+            <li>
+              Meer weten hoe deze reviewpagina tot stand komt?
+              <a href="https://www.kiyoh.com" target="_blank" rel="noopener">Lees dan hier meer</a>.
+            </li>
+            <li>
+              Wil je meer weten? Bekijk ons
+              <a href="#" data-open-modal>privacybeleid</a>
+              en ontdek hoe we omgaan met gegevens en reviews.
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <a href="https://www.kiyoh.com">www.kiyoh.com</a>
+    ·
+    <a href="#">Privacybeleid</a>
+    ·
+    <a href="#">Gebruikersvoorwaarden</a>
+    · © 2026 Kiyoh
+  </footer>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal__bg" data-close></div>
+    <div class="modal__box">
+      <div class="modal__top">
+        <h2>Gebruikersvoorwaarden en privacy policy</h2>
+        <button type="button" class="modal__x" data-close aria-label="Sluiten">×</button>
+      </div>
+      <div class="modal__body">
+        <p>
+          Ik ga akkoord met de verwerking van mijn persoonsgegevens (naam, e-mailadres, IP-adres en eventueel overige informatie die ik vrijwillig invul) in het kader van de AVG. Tevens verklaar ik dat ik klant ben (geweest) bij dit bedrijf.
+        </p>
+        <p>Je e-mailadres wordt niet gepubliceerd. Voornaam en plaats wel.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/prototype.js"></script>
+</body>
+</html>

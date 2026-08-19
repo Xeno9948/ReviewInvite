@@ -1,0 +1,11 @@
+{
+  "name": "kiyoh-review-invite",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npx --yes serve -l ${PORT:-3000} -s ."
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
