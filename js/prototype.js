@@ -60,12 +60,36 @@
     }
   }
 
+  function showCommitted() {
+    paint(score);
+    updatePreview(score);
+  }
+
+  function previewScore(val) {
+    paint(val);
+    updatePreview(val);
+  }
+
   function setScore(val) {
     score = Math.max(0, Math.min(10, val));
     if (rating) rating.value = score ? String(score) : "";
-    paint(score);
-    updatePreview(score);
+    showCommitted();
     bad("rating", false);
+  }
+
+  function scoreFromClientX(clientX) {
+    for (const btn of btns) {
+      const rect = btn.getBoundingClientRect();
+      if (clientX < rect.left || clientX > rect.right) continue;
+      const i = +btn.dataset.i;
+      const half = clientX - rect.left < rect.width / 2;
+      return half ? i * 2 - 1 : i * 2;
+    }
+    const first = btns[0];
+    const last = btns[btns.length - 1];
+    if (first && clientX < first.getBoundingClientRect().left) return 1;
+    if (last && clientX > last.getBoundingClientRect().right) return 10;
+    return 0;
   }
 
   function scoreFromEvent(btn, e) {
@@ -94,6 +118,19 @@
       }
     });
   });
+
+  const canHover = window.matchMedia("(min-width: 1024px) and (hover: hover) and (pointer: fine)");
+  if (root) {
+    root.addEventListener("mousemove", (e) => {
+      if (!canHover.matches) return;
+      const val = scoreFromClientX(e.clientX);
+      if (val >= 1) previewScore(val);
+    });
+    root.addEventListener("mouseleave", () => {
+      if (!canHover.matches) return;
+      showCommitted();
+    });
+  }
 
   const recSel = document.getElementById("RECOMMEND");
   form.querySelectorAll('input[name="recommend"]').forEach((r) => {
