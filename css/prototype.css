@@ -815,14 +815,15 @@ button {
 
   .form-layout__aside {
     min-width: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
   }
 
+  /* Cards top-align with the form, then follow the scroll so the
+     shorter column never leaves a dead gap beside the submit button. */
   .form-layout__aside .after-form {
     margin-top: 0;
     width: 100%;
+    position: sticky;
+    top: 96px;
   }
 
   .form-layout__aside .trust-row {
