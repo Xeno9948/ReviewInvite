@@ -46,14 +46,13 @@
     <h1 class="page__title">Beoordeel Kiyoh Klantbeoordelingen</h1>
     <p class="page__sub">Deel je ervaring. Je e-mailadres wordt niet gepubliceerd.</p>
 
-    <div id="form-root">
-      <form id="form" novalidate>
+    <div id="form-root" class="form-layout">
+      <form id="form" class="form-layout__main" novalidate>
         <section class="card">
           <h2 class="card__title">Jouw beoordeling</h2>
 
           <div class="field" data-f="rating">
             <span class="label" id="lab-rating">Totaal score <span class="req">*</span></span>
-            <p class="hint">Selecteer het aantal sterren voor de totale score (halve sterren mogelijk)</p>
             <div class="stars" role="radiogroup" aria-labelledby="lab-rating" data-stars>
               <button type="button" class="stars__btn" role="radio" aria-checked="false" aria-label="Ster 1" data-i="1">
                 <span class="stars__icon" aria-hidden="true">
@@ -86,6 +85,7 @@
                 </span>
               </button>
             </div>
+            <p class="score-preview" id="score-preview" aria-live="polite" hidden></p>
             <input type="hidden" name="rating" id="rating" value="" />
             <p class="err">Selecteer een totaalscore.</p>
           </div>
@@ -195,6 +195,7 @@
         </section>
       </form>
 
+      <aside class="form-layout__aside">
       <div class="after-form">
         <div class="trust-row">
           <span class="badge">
@@ -258,6 +259,7 @@
           </ul>
         </section>
       </div>
+      </aside>
     </div>
   </main>
 

@@ -264,6 +264,14 @@ button {
   padding: 24px 16px 48px;
 }
 
+@media (min-width: 1024px) {
+  .page {
+    max-width: 1180px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
 @media (max-width: 640px) {
   .page {
     padding: 16px 12px 40px;
@@ -337,6 +345,17 @@ button {
   margin: 0 0 8px;
   font-size: 12.5px;
   color: var(--muted);
+}
+
+.score-preview {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.score-preview[hidden] {
+  display: none;
 }
 
 .err {
@@ -780,6 +799,42 @@ button {
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+@media (min-width: 1024px) {
+  .form-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  .form-layout__main {
+    min-width: 0;
+  }
+
+  .form-layout__aside {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .form-layout__aside .after-form {
+    margin-top: 0;
+    width: 100%;
+  }
+
+  .form-layout__aside .trust-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-layout__aside .trust-row .badge {
+    height: auto;
+    min-height: 52px;
+    max-height: none;
+    white-space: normal;
+  }
 }
 
 .after-form .card {

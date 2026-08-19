@@ -9,6 +9,24 @@
   const root = form.querySelector("[data-stars]");
   const btns = root ? [...root.querySelectorAll("[data-i]")] : [];
   const rating = document.getElementById("rating");
+  const preview = document.getElementById("score-preview");
+
+  const SENTIMENT = {
+    1: "Zeer onvoldoende",
+    2: "Zeer onvoldoende",
+    3: "Ruim onvoldoende",
+    4: "Onvoldoende",
+    5: "Matig",
+    6: "Voldoende",
+    7: "Ruim voldoende",
+    8: "Goed",
+    9: "Zeer goed",
+    10: "Uitstekend",
+  };
+
+  function sentimentFor(val) {
+    return SENTIMENT[val] ?? "";
+  }
 
   function fmt(n) {
     const s = n % 1 === 0 ? String(n) : n.toFixed(1);
@@ -31,10 +49,22 @@
     });
   }
 
+  function updatePreview(val) {
+    if (!preview) return;
+    if (val >= 1) {
+      preview.textContent = "Cijfer " + fmt(val) + ": " + sentimentFor(val);
+      preview.hidden = false;
+    } else {
+      preview.textContent = "";
+      preview.hidden = true;
+    }
+  }
+
   function setScore(val) {
     score = Math.max(0, Math.min(10, val));
     if (rating) rating.value = score ? String(score) : "";
     paint(score);
+    updatePreview(score);
     bad("rating", false);
   }
 
