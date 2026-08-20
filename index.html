@@ -9,102 +9,122 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/prototype.css" />
   <link rel="icon" href="assets/kiyo-logo.svg" />
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("kiyoh-theme");
+        var prefersHC = window.matchMedia("(prefers-contrast: more)").matches;
+        if (stored === "contrast" || (stored !== "light" && prefersHC)) {
+          document.documentElement.setAttribute("data-theme", "contrast");
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Ga naar inhoud</a>
   <header class="header">
     <div class="header__inner">
       <a class="logo" href="https://www.kiyoh.com" aria-label="Kiyoh">
-        <img src="assets/kiyo-logo.svg" alt="Kiyoh" />
+        <img src="assets/kiyo-logo.svg" alt="" />
       </a>
 
       <div class="header__actions">
-        <a class="header__btn" href="https://www.kiyoh.com" aria-label="Website">
+        <a class="header__btn" href="https://www.kiyoh.com" aria-label="Kiyoh website">
           <img src="assets/globe-2.svg" alt="" />
         </a>
 
+        <button type="button" class="header__btn theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Hoog contrast inschakelen">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" />
+            <path d="M12 3a9 9 0 0 0 0 18V3z" fill="currentColor" />
+          </svg>
+        </button>
+
         <div class="lang" data-lang>
-          <button type="button" class="lang__btn" data-lang-toggle aria-expanded="false">
+          <button type="button" class="lang__btn" id="lang-toggle" data-lang-toggle aria-expanded="false" aria-haspopup="listbox" aria-controls="lang-menu" aria-label="Taal kiezen, huidige taal: Nederlands">
             <img class="flag" src="assets/nl.svg" alt="" />
             <span class="lang__text" data-lang-label>Nederlands</span>
             <img class="chev" src="assets/arrow-down.svg" alt="" />
           </button>
-          <ul class="lang__menu" hidden data-lang-menu>
-            <li><button type="button">Nederlands</button></li>
-            <li><button type="button">English</button></li>
-            <li><button type="button">Deutsch</button></li>
+          <ul class="lang__menu" hidden id="lang-menu" role="listbox" aria-labelledby="lang-toggle" data-lang-menu>
+            <li><button type="button" role="option" aria-selected="true">Nederlands</button></li>
+            <li><button type="button" role="option" aria-selected="false">English</button></li>
+            <li><button type="button" role="option" aria-selected="false">Deutsch</button></li>
           </ul>
         </div>
 
-        <a class="header__kiyoh" href="https://www.kiyoh.com" aria-label="Kiyoh">
+        <a class="header__kiyoh" href="https://www.kiyoh.com" aria-label="Kiyoh startpagina">
           <img src="assets/kiyo.svg" alt="" />
         </a>
       </div>
     </div>
   </header>
 
-  <main class="page">
+  <main id="main" class="page" tabindex="-1">
     <h1 class="page__title">Beoordeel Kiyoh Klantbeoordelingen</h1>
     <p class="page__sub">Deel je ervaring. Je e-mailadres wordt niet gepubliceerd.</p>
 
     <div id="form-root" class="form-layout">
       <form id="form" class="form-layout__main" novalidate>
+        <div class="form-status" id="form-status" role="alert" hidden></div>
         <section class="card">
           <h2 class="card__title">Jouw beoordeling</h2>
 
           <div class="field" data-f="rating">
-            <span class="label" id="lab-rating">Totaal score <span class="req">*</span></span>
-            <div class="stars" role="radiogroup" aria-labelledby="lab-rating" data-stars>
-              <button type="button" class="stars__btn" role="radio" aria-checked="false" aria-label="Ster 1" data-i="1">
+            <span class="label" id="lab-rating">Totaal score <span class="req"><span aria-hidden="true">*</span><span class="sr-only">verplicht</span></span></span>
+            <div class="stars" role="radiogroup" aria-labelledby="lab-rating" aria-describedby="score-preview err-rating" aria-required="true" data-stars>
+              <button type="button" class="stars__btn" role="radio" aria-checked="false" aria-label="Score 2 van 10" tabindex="0" data-i="1">
                 <span class="stars__icon" aria-hidden="true">
                   <svg class="stars__base" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.7.9-4.9 4.6 1.2 6.6L12 17.8 6.1 20.7l1.2-6.6L2.4 9.5l6.7-.9L12 2.5z"/></svg>
                   <span class="stars__fill"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.7.9-4.9 4.6 1.2 6.6L12 17.8 6.1 20.7l1.2-6.6L2.4 9.5l6.7-.9L12 2.5z"/></svg></span>
                 </span>
               </button>
-              <button type="button" class="stars__btn" role="radio" aria-checked="false" aria-label="Ster 2" data-i="2">
+              <button type="button" class="stars__btn" role="radio" aria-checked="false" aria-label="Score 4 van 10" tabindex="-1" data-i="2">
                 <span class="stars__icon" aria-hidden="true">
                   <svg class="stars__base" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.7.9-4.9 4.6 1.2 6.6L12 17.8 6.1 20.7l1.2-6.6L2.4 9.5l6.7-.9L12 2.5z"/></svg>
                   <span class="stars__fill"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.7.9-4.9 4.6 1.2 6.6L12 17.8 6.1 20.7l1.2-6.6L2.4 9.5l6.7-.9L12 2.5z"/></svg></span>
                 </span>
               </button>
-              <button type="button" class="stars__btn" role="radio" aria-checked="false" aria-label="Ster 3" data-i="3">
+              <button type="button" class="stars__btn" role="radio" aria-checked="false" aria-label="Score 6 van 10" tabindex="-1" data-i="3">
                 <span class="stars__icon" aria-hidden="true">
                   <svg class="stars__base" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.7.9-4.9 4.6 1.2 6.6L12 17.8 6.1 20.7l1.2-6.6L2.4 9.5l6.7-.9L12 2.5z"/></svg>
                   <span class="stars__fill"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.7.9-4.9 4.6 1.2 6.6L12 17.8 6.1 20.7l1.2-6.6L2.4 9.5l6.7-.9L12 2.5z"/></svg></span>
                 </span>
               </button>
-              <button type="button" class="stars__btn" role="radio" aria-checked="false" aria-label="Ster 4" data-i="4">
+              <button type="button" class="stars__btn" role="radio" aria-checked="false" aria-label="Score 8 van 10" tabindex="-1" data-i="4">
                 <span class="stars__icon" aria-hidden="true">
                   <svg class="stars__base" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.7.9-4.9 4.6 1.2 6.6L12 17.8 6.1 20.7l1.2-6.6L2.4 9.5l6.7-.9L12 2.5z"/></svg>
                   <span class="stars__fill"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.7.9-4.9 4.6 1.2 6.6L12 17.8 6.1 20.7l1.2-6.6L2.4 9.5l6.7-.9L12 2.5z"/></svg></span>
                 </span>
               </button>
-              <button type="button" class="stars__btn" role="radio" aria-checked="false" aria-label="Ster 5" data-i="5">
+              <button type="button" class="stars__btn" role="radio" aria-checked="false" aria-label="Score 10 van 10" tabindex="-1" data-i="5">
                 <span class="stars__icon" aria-hidden="true">
                   <svg class="stars__base" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.7.9-4.9 4.6 1.2 6.6L12 17.8 6.1 20.7l1.2-6.6L2.4 9.5l6.7-.9L12 2.5z"/></svg>
                   <span class="stars__fill"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.7.9-4.9 4.6 1.2 6.6L12 17.8 6.1 20.7l1.2-6.6L2.4 9.5l6.7-.9L12 2.5z"/></svg></span>
                 </span>
               </button>
             </div>
-            <p class="score-preview" id="score-preview" aria-live="polite" hidden></p>
+            <p class="score-preview" id="score-preview" aria-live="polite" aria-atomic="true" hidden></p>
             <input type="hidden" name="rating" id="rating" value="" />
-            <p class="err">Selecteer een totaalscore.</p>
+            <p class="err" id="err-rating">Selecteer een totaalscore.</p>
           </div>
 
           <div class="field" data-f="title">
-            <label class="label" for="description">Titel <span class="req">*</span></label>
-            <input class="input" type="text" id="description" name="description" maxlength="120" placeholder="Mijn ervaring in één zin*" autocomplete="off" />
-            <p class="err">Vul een korte titel in.</p>
+            <label class="label" for="description">Titel <span class="req"><span aria-hidden="true">*</span><span class="sr-only">verplicht</span></span></label>
+            <input class="input" type="text" id="description" name="description" maxlength="120" placeholder="Mijn ervaring in één zin*" autocomplete="off" required aria-required="true" aria-describedby="err-title" />
+            <p class="err" id="err-title">Vul een korte titel in.</p>
           </div>
 
           <div class="field" data-f="body">
-            <label class="label" for="body">Toelichting <span class="req">*</span></label>
-            <textarea class="textarea" id="body" name="reviewBody" rows="5" placeholder="Mijn ervaring omschrijf ik als volgt*"></textarea>
-            <p class="err">Omschrijf je ervaring.</p>
+            <label class="label" for="body">Toelichting <span class="req"><span aria-hidden="true">*</span><span class="sr-only">verplicht</span></span></label>
+            <textarea class="textarea" id="body" name="reviewBody" rows="5" placeholder="Mijn ervaring omschrijf ik als volgt*" required aria-required="true" aria-describedby="err-body"></textarea>
+            <p class="err" id="err-body">Omschrijf je ervaring.</p>
           </div>
 
           <div class="field" data-f="recommend">
-            <span class="label" id="lab-rec">Aanbevelen? <span class="req">*</span></span>
-            <div class="choice" role="radiogroup" aria-labelledby="lab-rec">
+            <span class="label" id="lab-rec">Aanbevelen? <span class="req"><span aria-hidden="true">*</span><span class="sr-only">verplicht</span></span></span>
+            <div class="choice" role="radiogroup" aria-labelledby="lab-rec" aria-required="true" aria-describedby="err-recommend">
               <label>
                 <input type="radio" name="recommend" value="true" />
                 <span>Ja</span>
@@ -119,16 +139,16 @@
               <option value="true">Ja</option>
               <option value="false">Nee</option>
             </select>
-            <p class="err">Maak een keuze.</p>
+            <p class="err" id="err-recommend">Maak een keuze.</p>
           </div>
         </section>
 
         <section class="card">
           <h2 class="card__title">Beoordeel de volgende punten</h2>
           <div class="field" data-f="contact">
-            <label class="label" for="contact-person">Met wie heb je contact gehad? <span class="req">*</span></label>
+            <label class="label" for="contact-person">Met wie heb je contact gehad? <span class="req"><span aria-hidden="true">*</span><span class="sr-only">verplicht</span></span></label>
             <div class="row">
-              <select class="select" id="contact-person" name="CONTACT_PERSON">
+              <select class="select" id="contact-person" name="CONTACT_PERSON" aria-describedby="err-contact">
                 <option value="">Maak een keuze</option>
                 <option value="Priscilla Pijper van Bragt">Priscilla Pijper van Bragt</option>
                 <option value="Robin van Nobelen">Robin van Nobelen</option>
@@ -138,12 +158,12 @@
                 <option value="Linda Jeurissen">Linda Jeurissen</option>
                 <option value="Bart van Dijk">Bart van Dijk</option>
               </select>
-              <label class="check">
+              <label class="check" for="na">
                 <input type="checkbox" id="na" />
                 N.v.t.
               </label>
             </div>
-            <p class="err">Kies een medewerker of vink N.v.t. aan.</p>
+            <p class="err" id="err-contact">Kies een medewerker of vink N.v.t. aan.</p>
           </div>
         </section>
 
@@ -157,36 +177,36 @@
 
           <div class="grid-2">
             <div class="field" data-f="name">
-              <label class="label" for="NAME">Voornaam <span class="req">*</span></label>
-              <input class="input" type="text" id="NAME" name="NAME" autocomplete="given-name" required />
-              <p class="err">Vul je voornaam in.</p>
+              <label class="label" for="NAME">Voornaam <span class="req"><span aria-hidden="true">*</span><span class="sr-only">verplicht</span></span></label>
+              <input class="input" type="text" id="NAME" name="NAME" autocomplete="given-name" required aria-required="true" aria-describedby="err-name" />
+              <p class="err" id="err-name">Vul je voornaam in.</p>
             </div>
             <div class="field" data-f="city">
-              <label class="label" for="CITY">Plaats <span class="req">*</span></label>
-              <input class="input" type="text" id="CITY" name="CITY" autocomplete="address-level2" required />
-              <p class="err">Vul je plaats in.</p>
+              <label class="label" for="CITY">Plaats <span class="req"><span aria-hidden="true">*</span><span class="sr-only">verplicht</span></span></label>
+              <input class="input" type="text" id="CITY" name="CITY" autocomplete="address-level2" required aria-required="true" aria-describedby="err-city" />
+              <p class="err" id="err-city">Vul je plaats in.</p>
             </div>
           </div>
 
           <div class="field" data-f="email">
-            <label class="label" for="EMAIL">E-mailadres <span class="req">*</span></label>
-            <input class="input" type="email" id="EMAIL" name="EMAIL" autocomplete="email" required />
-            <p class="hint">Het e-mailadres wordt niet gepubliceerd.</p>
-            <p class="err">Vul een geldig e-mailadres in.</p>
+            <label class="label" for="EMAIL">E-mailadres <span class="req"><span aria-hidden="true">*</span><span class="sr-only">verplicht</span></span></label>
+            <input class="input" type="email" id="EMAIL" name="EMAIL" autocomplete="email" required aria-required="true" aria-describedby="hint-email err-email" />
+            <p class="hint" id="hint-email">Het e-mailadres wordt niet gepubliceerd.</p>
+            <p class="err" id="err-email">Vul een geldig e-mailadres in.</p>
           </div>
 
           <p class="note">Velden met <strong>*</strong> zijn verplicht. Voornaam en plaats worden zichtbaar op de reviewpagina.</p>
 
           <div class="field" data-f="consent">
             <label class="consent">
-              <input type="checkbox" id="opt-in" name="OPT_IN" value="1" />
+              <input type="checkbox" id="opt-in" name="OPT_IN" value="1" aria-required="true" aria-describedby="err-consent" />
               <span class="consent__text">
                 Ik ga bij verzenden akkoord met de
                 <button type="button" data-open-modal>gebruikersvoorwaarden en het privacybeleid</button>
                 en met de verwerking van mijn persoonsgegevens in het kader van de AVG. Tevens verklaar ik dat ik klant ben (geweest) bij dit bedrijf.
               </span>
             </label>
-            <p class="err">Je moet akkoord gaan om te versturen.</p>
+            <p class="err" id="err-consent">Je moet akkoord gaan om te versturen.</p>
           </div>
 
           <div class="actions">
@@ -195,7 +215,7 @@
         </section>
       </form>
 
-      <aside class="form-layout__aside">
+      <aside class="form-layout__aside" aria-label="Informatie over Kiyoh">
       <div class="after-form">
         <div class="trust-row">
           <span class="badge">
@@ -223,6 +243,7 @@
           <a class="about__more" href="https://www.kiyoh.com" target="_blank" rel="noopener">
             Meer weten over Kiyoh
             <span aria-hidden="true">→</span>
+            <span class="sr-only">(opent in een nieuw tabblad)</span>
           </a>
         </section>
 
@@ -231,13 +252,13 @@
           <ul class="legal-list">
             <li>
               Iedereen mag een review
-              <a href="https://www.kiyoh.com" target="_blank" rel="noopener">schrijven</a>
+              <a href="https://www.kiyoh.com" target="_blank" rel="noopener">schrijven<span class="sr-only"> (opent in een nieuw tabblad)</span></a>
               zolang er voldaan wordt aan de
               <a href="#" data-open-modal>gebruikersvoorwaarden</a>.
             </li>
             <li>
               Kiyoh &amp; Klantenvertellen zijn onafhankelijke platformen en erkend
-              <a href="https://www.kiyoh.com" target="_blank" rel="noopener">Google reviewpartner</a>.
+              <a href="https://www.kiyoh.com" target="_blank" rel="noopener">Google reviewpartner<span class="sr-only"> (opent in een nieuw tabblad)</span></a>.
               Of een review nu lovend is of juist kritisch – iedere stem telt.
             </li>
             <li>
@@ -249,7 +270,7 @@
             </li>
             <li>
               Meer weten hoe deze reviewpagina tot stand komt?
-              <a href="https://www.kiyoh.com" target="_blank" rel="noopener">Lees dan hier meer</a>.
+              <a href="https://www.kiyoh.com" target="_blank" rel="noopener">Lees dan hier meer<span class="sr-only"> (opent in een nieuw tabblad)</span></a>.
             </li>
             <li>
               Wil je meer weten? Bekijk ons
@@ -266,17 +287,17 @@
   <footer class="footer">
     <a href="https://www.kiyoh.com">www.kiyoh.com</a>
     ·
-    <a href="#">Privacybeleid</a>
+    <a href="#" data-open-modal>Privacybeleid</a>
     ·
-    <a href="#">Gebruikersvoorwaarden</a>
+    <a href="#" data-open-modal>Gebruikersvoorwaarden</a>
     · © 2026 Kiyoh
   </footer>
 
   <div class="modal" id="modal" hidden>
     <div class="modal__bg" data-close></div>
-    <div class="modal__box">
+    <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
       <div class="modal__top">
-        <h2>Gebruikersvoorwaarden en privacy policy</h2>
+        <h2 id="modal-title">Gebruikersvoorwaarden en privacy policy</h2>
         <button type="button" class="modal__x" data-close aria-label="Sluiten">×</button>
       </div>
       <div class="modal__body">
