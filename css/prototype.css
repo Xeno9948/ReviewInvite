@@ -1261,48 +1261,57 @@ button {
   }
 }
 
-/* High contrast / dark theme */
+/* High contrast / dark theme — charcoal tint from the live review page */
 html[data-theme="contrast"] {
   color-scheme: dark;
-  --orange: #ffe14d;
-  --orange-hover: #fff0a3;
+  --orange: #dd6825;
+  --orange-hover: #e07838;
   --ink: #ffffff;
-  --slate: #f2f2f2;
-  --line: #e6e6e6;
-  --canvas: #000000;
-  --white: #0e0e0e;
-  --wash: #1a1a1a;
-  --green: #8adf4a;
-  --green-text: #b6f07a;
-  --star: #ffe14d;
-  --star-empty: #9a9a9a;
+  --slate: #b0b3b8;
+  --line: #4c5156;
+  --canvas: #2b2d30;
+  --white: #353a3e;
+  --wash: #3c4146;
+  --green: #68b03d;
+  --green-text: #8adf4a;
+  --star: #ffb612;
+  --star-empty: #6a6f75;
   --text-body: #ffffff;
-  --muted: #e0e0e0;
+  --muted: #b0b3b8;
   --error: #ff8a8a;
-  --shadow: none;
-  --placeholder: #c8c8c8;
-  --tint: #2a2400;
-  --ring: #ffe14d66;
-  --focus: #ffe14d;
+  --shadow: 0 2px 8px #00000040;
+  --placeholder: #9aa0a6;
+  --tint: #3d342c;
+  --ring: #dd682555;
+  --focus: #dd6825;
 }
 
 html[data-theme="contrast"] body {
-  background: #000;
-  color: #fff;
+  background: var(--canvas);
+  color: var(--text-body);
 }
 
 html[data-theme="contrast"] .header,
-html[data-theme="contrast"] .footer,
+html[data-theme="contrast"] .footer {
+  background: #2f3236;
+  border-color: var(--line);
+}
+
+html[data-theme="contrast"] .header__actions,
 html[data-theme="contrast"] .card,
 html[data-theme="contrast"] .badge,
-html[data-theme="contrast"] .header__actions,
+html[data-theme="contrast"] .modal__box,
+html[data-theme="contrast"] .lang__menu {
+  background: var(--white);
+  border-color: var(--line);
+  border-width: 1px;
+}
+
 html[data-theme="contrast"] .header__btn,
-html[data-theme="contrast"] .lang__btn,
-html[data-theme="contrast"] .lang__menu,
-html[data-theme="contrast"] .modal__box {
-  background: #000;
-  border-color: #fff;
-  border-width: 2px;
+html[data-theme="contrast"] .lang__btn {
+  background: #3c4146;
+  border-color: var(--line);
+  color: #dd6825;
 }
 
 html[data-theme="contrast"] .input,
@@ -1311,36 +1320,40 @@ html[data-theme="contrast"] .textarea,
 html[data-theme="contrast"] .choice label,
 html[data-theme="contrast"] .check,
 html[data-theme="contrast"] .consent {
-  background: #000;
+  background: #2f3236;
   color: #fff;
-  border-color: #fff;
-  border-width: 2px;
+  border-color: var(--line);
+  border-width: 1px;
 }
 
 html[data-theme="contrast"] a,
 html[data-theme="contrast"] .consent__text button,
 html[data-theme="contrast"] .about__more {
-  color: #ffe14d;
+  color: #e07838;
 }
 
 html[data-theme="contrast"] .btn--primary {
-  background: #ffe14d;
-  color: #000;
+  background: #dd6825;
+  color: #fff;
 }
 
 html[data-theme="contrast"] .btn--primary:hover {
-  background: #fff0a3;
-  color: #000;
+  background: #e07838;
+  color: #fff;
 }
 
 html[data-theme="contrast"] .btn--ghost {
-  background: #000;
-  color: #ffe14d;
-  border: 2px solid #ffe14d;
+  background: transparent;
+  color: var(--slate);
+  border: 1px solid var(--line);
 }
 
 html[data-theme="contrast"] .logo img {
-  filter: invert(1) grayscale(1) brightness(2);
+  filter: invert(1) hue-rotate(180deg) saturate(1.05) brightness(1.15);
+}
+
+html[data-theme="contrast"] .header__kiyoh img {
+  filter: none;
 }
 
 html[data-theme="contrast"] .header__btn img,
@@ -1348,23 +1361,27 @@ html[data-theme="contrast"] .about__title img {
   filter: invert(1);
 }
 
+html[data-theme="contrast"] .theme-toggle {
+  color: #dd6825;
+}
+
 html[data-theme="contrast"] .theme-toggle[aria-pressed="true"] {
-  background: #ffe14d;
-  color: #000;
-  border-color: #ffe14d;
+  background: #dd6825;
+  color: #fff;
+  border-color: #dd6825;
 }
 
 html[data-theme="contrast"] .theme-toggle[aria-pressed="true"] svg {
-  color: #000;
+  color: #fff;
 }
 
 html[data-theme="contrast"] .skip-link {
-  background: #ffe14d;
-  color: #000;
+  background: #dd6825;
+  color: #fff;
 }
 
 html[data-theme="contrast"] .form-status {
-  background: #2a0000;
+  background: #4a2a2a;
   border-color: #ff8a8a;
   color: #fff;
 }
@@ -1375,5 +1392,5 @@ html[data-theme="contrast"] .lang__menu button {
 
 html[data-theme="contrast"] .lang__menu button:hover,
 html[data-theme="contrast"] .lang__menu button[aria-selected="true"] {
-  background: #222;
+  background: #3c4146;
 }
