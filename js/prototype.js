@@ -6,7 +6,9 @@
 
   function applyTheme(mode) {
     const on = mode === "contrast";
+    document.documentElement.classList.toggle("contrast", on);
     document.documentElement.setAttribute("data-theme", on ? "contrast" : "light");
+    if (document.body) document.body.classList.toggle("contrast", on);
     document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
       btn.setAttribute("aria-pressed", String(on));
       btn.setAttribute("aria-label", on ? "Hoog contrast uitschakelen" : "Hoog contrast inschakelen");
@@ -14,17 +16,22 @@
   }
 
   function currentTheme() {
-    return document.documentElement.getAttribute("data-theme") === "contrast" ? "contrast" : "light";
+    return document.documentElement.classList.contains("contrast") ||
+      document.documentElement.getAttribute("data-theme") === "contrast"
+      ? "contrast"
+      : "light";
   }
 
-  document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const next = currentTheme() === "contrast" ? "light" : "contrast";
-      try {
-        localStorage.setItem(THEME_KEY, next);
-      } catch (e) {}
-      applyTheme(next);
-    });
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-theme-toggle]");
+    if (!btn) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const next = currentTheme() === "contrast" ? "light" : "contrast";
+    try {
+      localStorage.setItem(THEME_KEY, next);
+    } catch (err) {}
+    applyTheme(next);
   });
   applyTheme(currentTheme());
 

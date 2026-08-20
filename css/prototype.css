@@ -168,8 +168,8 @@ button {
 
 .header__btn img,
 .header__btn svg {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   display: block;
 }
 
@@ -412,13 +412,17 @@ button {
 }
 
 .theme-toggle {
-  color: var(--ink);
+  color: var(--orange);
 }
 
 .theme-toggle[aria-pressed="true"] {
-  background: var(--ink);
-  color: var(--white);
-  border-color: var(--ink);
+  background: var(--tint);
+  color: var(--orange);
+  border-color: var(--orange);
+}
+
+.theme-toggle[aria-pressed="true"] .theme-toggle__eye circle {
+  fill: currentColor;
 }
 
 .field.is-invalid .err {
@@ -1262,7 +1266,7 @@ button {
 }
 
 /* High contrast / dark theme */
-html[data-theme="contrast"] {
+html.contrast {
   color-scheme: dark;
   --orange: #ffe14d;
   --orange-hover: #fff0a3;
@@ -1286,94 +1290,94 @@ html[data-theme="contrast"] {
   --focus: #ffe14d;
 }
 
-html[data-theme="contrast"] body {
+html.contrast,
+html.contrast body {
   background: #000;
   color: #fff;
 }
 
-html[data-theme="contrast"] .header,
-html[data-theme="contrast"] .footer,
-html[data-theme="contrast"] .card,
-html[data-theme="contrast"] .badge,
-html[data-theme="contrast"] .header__actions,
-html[data-theme="contrast"] .header__btn,
-html[data-theme="contrast"] .lang__btn,
-html[data-theme="contrast"] .lang__menu,
-html[data-theme="contrast"] .modal__box {
+html.contrast .header,
+html.contrast .footer,
+html.contrast .card,
+html.contrast .badge,
+html.contrast .header__actions,
+html.contrast .header__btn,
+html.contrast .lang__btn,
+html.contrast .lang__menu,
+html.contrast .modal__box {
   background: #000;
   border-color: #fff;
   border-width: 2px;
 }
 
-html[data-theme="contrast"] .input,
-html[data-theme="contrast"] .select,
-html[data-theme="contrast"] .textarea,
-html[data-theme="contrast"] .choice label,
-html[data-theme="contrast"] .check,
-html[data-theme="contrast"] .consent {
+html.contrast .input,
+html.contrast .select,
+html.contrast .textarea,
+html.contrast .choice label,
+html.contrast .check,
+html.contrast .consent {
   background: #000;
   color: #fff;
   border-color: #fff;
   border-width: 2px;
 }
 
-html[data-theme="contrast"] a,
-html[data-theme="contrast"] .consent__text button,
-html[data-theme="contrast"] .about__more {
+html.contrast a,
+html.contrast .consent__text button,
+html.contrast .about__more {
   color: #ffe14d;
 }
 
-html[data-theme="contrast"] .btn--primary {
+html.contrast .btn--primary {
   background: #ffe14d;
   color: #000;
 }
 
-html[data-theme="contrast"] .btn--primary:hover {
+html.contrast .btn--primary:hover {
   background: #fff0a3;
   color: #000;
 }
 
-html[data-theme="contrast"] .btn--ghost {
+html.contrast .btn--ghost {
   background: #000;
   color: #ffe14d;
   border: 2px solid #ffe14d;
 }
 
-html[data-theme="contrast"] .logo img {
+html.contrast .logo img {
   filter: invert(1) grayscale(1) brightness(2);
 }
 
-html[data-theme="contrast"] .header__btn img,
-html[data-theme="contrast"] .about__title img {
+html.contrast .about__title img {
   filter: invert(1);
 }
 
-html[data-theme="contrast"] .theme-toggle[aria-pressed="true"] {
+html.contrast .theme-toggle {
+  color: #ffe14d;
+}
+
+html.contrast .theme-toggle[aria-pressed="true"] {
   background: #ffe14d;
   color: #000;
   border-color: #ffe14d;
 }
 
-html[data-theme="contrast"] .theme-toggle[aria-pressed="true"] svg {
-  color: #000;
-}
-
-html[data-theme="contrast"] .skip-link {
+html.contrast .skip-link {
   background: #ffe14d;
   color: #000;
 }
 
-html[data-theme="contrast"] .form-status {
+html.contrast .form-status {
   background: #2a0000;
   border-color: #ff8a8a;
   color: #fff;
 }
 
-html[data-theme="contrast"] .lang__menu button {
+html.contrast .lang__menu button {
   color: #fff;
 }
 
-html[data-theme="contrast"] .lang__menu button:hover,
-html[data-theme="contrast"] .lang__menu button[aria-selected="true"] {
+html.contrast .lang__menu button:hover,
+html.contrast .lang__menu button[aria-selected="true"] {
   background: #222;
 }
