@@ -134,6 +134,10 @@ button {
   object-fit: contain;
 }
 
+.logo__dark {
+  display: none;
+}
+
 .header__actions {
   display: flex;
   align-items: center;
@@ -1348,8 +1352,12 @@ html[data-theme="contrast"] .btn--ghost {
   border: 1px solid var(--line);
 }
 
-html[data-theme="contrast"] .logo img {
-  filter: invert(1) hue-rotate(180deg) saturate(1.05) brightness(1.15);
+html[data-theme="contrast"] .logo__light {
+  display: none;
+}
+
+html[data-theme="contrast"] .logo__dark {
+  display: block;
 }
 
 html[data-theme="contrast"] .header__kiyoh img {
