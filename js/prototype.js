@@ -1,39 +1,17 @@
 (function () {
   "use strict";
 
-  const THEME_KEY = "kiyoh-theme";
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  function applyTheme(mode) {
-    const on = mode === "contrast";
-    document.documentElement.classList.toggle("contrast", on);
-    document.documentElement.setAttribute("data-theme", on ? "contrast" : "light");
-    if (document.body) document.body.classList.toggle("contrast", on);
-    document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
-      btn.setAttribute("aria-pressed", String(on));
-      btn.setAttribute("aria-label", on ? "Hoog contrast uitschakelen" : "Hoog contrast inschakelen");
+  document.querySelectorAll("[data-share]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        btn.setAttribute("aria-label", "Link gekopieerd");
+        setTimeout(() => btn.setAttribute("aria-label", "Kopieer link"), 1500);
+      } catch (err) {}
     });
-  }
-
-  function currentTheme() {
-    return document.documentElement.classList.contains("contrast") ||
-      document.documentElement.getAttribute("data-theme") === "contrast"
-      ? "contrast"
-      : "light";
-  }
-
-  document.addEventListener("click", (e) => {
-    const btn = e.target.closest("[data-theme-toggle]");
-    if (!btn) return;
-    e.preventDefault();
-    e.stopPropagation();
-    const next = currentTheme() === "contrast" ? "light" : "contrast";
-    try {
-      localStorage.setItem(THEME_KEY, next);
-    } catch (err) {}
-    applyTheme(next);
   });
-  applyTheme(currentTheme());
 
   const lang = document.querySelector("[data-lang]");
   if (lang) {

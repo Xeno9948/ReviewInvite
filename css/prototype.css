@@ -155,7 +155,7 @@ button {
   border: 1px solid var(--line);
   border-radius: 12px;
   background: var(--white);
-  color: var(--orange);
+  color: #dd6825;
   text-decoration: none;
   appearance: none;
 }
@@ -168,8 +168,8 @@ button {
 
 .header__btn img,
 .header__btn svg {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   display: block;
 }
 
@@ -207,6 +207,10 @@ button {
   width: 13px;
   height: 13px;
   opacity: 0.55;
+}
+
+.lang__text {
+  display: none;
 }
 
 .lang__menu {
@@ -280,10 +284,6 @@ button {
   .header__kiyoh {
     padding-left: 6px;
     padding-right: 4px;
-  }
-
-  .lang__text {
-    display: none;
   }
 }
 
@@ -412,17 +412,13 @@ button {
 }
 
 .theme-toggle {
-  color: var(--orange);
+  color: #dd6825;
 }
 
 .theme-toggle[aria-pressed="true"] {
-  background: var(--tint);
-  color: var(--orange);
-  border-color: var(--orange);
-}
-
-.theme-toggle[aria-pressed="true"] .theme-toggle__eye circle {
-  fill: currentColor;
+  background: #fffaf6;
+  color: #dd6825;
+  border-color: #dd6825;
 }
 
 .field.is-invalid .err {
@@ -1265,119 +1261,81 @@ button {
   }
 }
 
-/* High contrast / dark theme */
-html.contrast {
+/* Dark theme — same as the live Kiyoh review page eye toggle */
+html.dark {
   color-scheme: dark;
-  --orange: #ffe14d;
-  --orange-hover: #fff0a3;
-  --ink: #ffffff;
-  --slate: #f2f2f2;
-  --line: #e6e6e6;
-  --canvas: #000000;
-  --white: #0e0e0e;
-  --wash: #1a1a1a;
+  --orange: #f08a4b;
+  --orange-hover: #ff9e63;
+  --ink: #f4f6f8;
+  --slate: #c5ced8;
+  --line: #3a4654;
+  --canvas: #10151c;
+  --white: #1a222c;
+  --wash: #232c38;
   --green: #8adf4a;
-  --green-text: #b6f07a;
-  --star: #ffe14d;
-  --star-empty: #9a9a9a;
-  --text-body: #ffffff;
-  --muted: #e0e0e0;
+  --green-text: #9ae26a;
+  --star: #ffb612;
+  --star-empty: #6b7380;
+  --text-body: #e8edf2;
+  --muted: #a8b3c0;
   --error: #ff8a8a;
   --shadow: none;
-  --placeholder: #c8c8c8;
-  --tint: #2a2400;
-  --ring: #ffe14d66;
-  --focus: #ffe14d;
+  --placeholder: #9aa6b4;
+  --tint: #2a2118;
+  --ring: #f08a4b55;
+  --focus: #f08a4b;
 }
 
-html.contrast,
-html.contrast body {
-  background: #000;
-  color: #fff;
+html.dark,
+html.dark body {
+  background: var(--canvas);
+  color: var(--text-body);
 }
 
-html.contrast .header,
-html.contrast .footer,
-html.contrast .card,
-html.contrast .badge,
-html.contrast .header__actions,
-html.contrast .header__btn,
-html.contrast .lang__btn,
-html.contrast .lang__menu,
-html.contrast .modal__box {
-  background: #000;
-  border-color: #fff;
-  border-width: 2px;
+html.dark .header,
+html.dark .footer {
+  background: #141b22;
 }
 
-html.contrast .input,
-html.contrast .select,
-html.contrast .textarea,
-html.contrast .choice label,
-html.contrast .check,
-html.contrast .consent {
-  background: #000;
-  color: #fff;
-  border-color: #fff;
-  border-width: 2px;
+html.dark .header__btn,
+html.dark .lang__btn {
+  background: transparent;
+  border-color: #dd6825;
+  color: #dd6825;
 }
 
-html.contrast a,
-html.contrast .consent__text button,
-html.contrast .about__more {
-  color: #ffe14d;
+html.dark .theme-toggle,
+html.dark .theme-toggle[aria-pressed="true"] {
+  background: transparent;
+  border-color: #dd6825;
+  color: #dd6825;
 }
 
-html.contrast .btn--primary {
-  background: #ffe14d;
-  color: #000;
+html.dark .logo img {
+  filter: invert(1) hue-rotate(180deg) saturate(1.1) brightness(1.15);
 }
 
-html.contrast .btn--primary:hover {
-  background: #fff0a3;
-  color: #000;
+html.dark .header__kiyoh img {
+  filter: none;
 }
 
-html.contrast .btn--ghost {
-  background: #000;
-  color: #ffe14d;
-  border: 2px solid #ffe14d;
-}
-
-html.contrast .logo img {
-  filter: invert(1) grayscale(1) brightness(2);
-}
-
-html.contrast .about__title img {
+html.dark .about__title img {
   filter: invert(1);
 }
 
-html.contrast .theme-toggle {
-  color: #ffe14d;
+html.dark .btn--primary {
+  background: #dd6825;
+  color: #fff;
 }
 
-html.contrast .theme-toggle[aria-pressed="true"] {
-  background: #ffe14d;
-  color: #000;
-  border-color: #ffe14d;
+html.dark .btn--ghost {
+  background: transparent;
+  color: var(--slate);
+  border-color: var(--line);
 }
 
-html.contrast .skip-link {
-  background: #ffe14d;
-  color: #000;
-}
-
-html.contrast .form-status {
-  background: #2a0000;
+html.dark .form-status {
+  background: #3a1515;
   border-color: #ff8a8a;
   color: #fff;
-}
-
-html.contrast .lang__menu button {
-  color: #fff;
-}
-
-html.contrast .lang__menu button:hover,
-html.contrast .lang__menu button[aria-selected="true"] {
-  background: #222;
 }
